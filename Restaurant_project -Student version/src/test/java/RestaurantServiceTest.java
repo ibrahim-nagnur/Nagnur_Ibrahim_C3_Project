@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -69,4 +70,14 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1, service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //adding test case for getting total value of selected items
+    @Test
+    public void Calculate_Order_Value_Should_Return_30_When_Given_List_Of_Items_With_Item1Price_10_And_Item2Price_20(){
+        Item item1 = new Item("Item1", 10);
+        Item item2 = new Item("Item2", 20);
+
+        List<Item> items = List.of(item1, item2);
+        assertThat(service.calculateOrderValue(items), equalTo(30.0));
+    }
 }

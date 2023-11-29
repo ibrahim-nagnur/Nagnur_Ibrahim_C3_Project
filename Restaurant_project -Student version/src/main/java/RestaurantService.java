@@ -32,4 +32,12 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public double calculateOrderValue(List<Item> items){
+        double totalAmount = 0;
+        for (Item i : items){
+            totalAmount += i.getPrice();
+        }
+        return totalAmount;
+    }
 }
